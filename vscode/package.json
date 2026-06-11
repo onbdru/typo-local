@@ -1,0 +1,123 @@
+{
+  "name": "local-typograf",
+  "displayName": "Локальный Типограф",
+  "description": "Быстрый локальный типограф для русского и английского языков.",
+  "version": "1.0.0",
+  "publisher": "onbdru",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/onbdru/typo-local.git"
+  },
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Formatters",
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "local-typograf.format",
+        "title": "Типограф: Форматировать текст"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "local-typograf.format",
+        "key": "ctrl+alt+t",
+        "mac": "cmd+alt+t",
+        "when": "editorTextFocus && !editorReadonly"
+      }
+    ],
+    "configuration": {
+      "title": "Типограф (Local Typograf)",
+      "properties": {
+        "local-typograf.primaryQuotes": {
+          "type": "string",
+          "enum": [
+            "laquo_raquo",
+            "bdquo_ldquo",
+            "ldquo_rdquo",
+            "dquote",
+            "lsquo_rsquo",
+            "squote"
+          ],
+          "enumDescriptions": [
+            "«ёлочки»",
+            "„лапки“",
+            "“английские двойные”",
+            "\"прямые двойные\"",
+            "‘английские одинарные’",
+            "'прямые одинарные'"
+          ],
+          "default": "laquo_raquo",
+          "description": "Тип кавычек первого уровня (внешние кавычки)."
+        },
+        "local-typograf.secondaryQuotes": {
+          "type": "string",
+          "enum": [
+            "laquo_raquo",
+            "bdquo_ldquo",
+            "ldquo_rdquo",
+            "dquote",
+            "lsquo_rsquo",
+            "squote"
+          ],
+          "enumDescriptions": [
+            "«ёлочки»",
+            "„лапки“",
+            "“английские двойные”",
+            "\"прямые двойные\"",
+            "‘английские одинарные’",
+            "'прямые одинарные'"
+          ],
+          "default": "bdquo_ldquo",
+          "description": "Тип кавычек второго уровня (вложенные кавычки)."
+        },
+        "local-typograf.outputFormat": {
+          "type": "string",
+          "enum": [
+            "raw",
+            "entityName",
+            "entityCode"
+          ],
+          "enumDescriptions": [
+            "Готовые Unicode-символы (напр. «слово»)",
+            "Буквенные HTML-коды (напр. &laquo;слово&raquo;)",
+            "Числовые HTML-коды (напр. &#171;слово&#187;)"
+          ],
+          "default": "raw",
+          "description": "Формат вывода спецсимволов и кавычек."
+        },
+        "local-typograf.insertLineBreaks": {
+          "type": "boolean",
+          "default": false,
+          "description": "Ставить переносы строк (заменять символы новой строки тегами <br />)."
+        },
+        "local-typograf.wrapParagraphs": {
+          "type": "boolean",
+          "default": false,
+          "description": "Размечать параграфы (оборачивать блоки текста в теги <p>...</p>)."
+        },
+        "local-typograf.removeTabs": {
+          "type": "boolean",
+          "default": false,
+          "description": "Удалять символы табуляции (заменять их пробелами)."
+        },
+        "local-typograf.punctuationSpaces": {
+          "type": "boolean",
+          "default": true,
+          "description": "Убирать пробелы до и ставить пробелы после знаков препинания."
+        },
+        "local-typograf.cleanAfterScan": {
+          "type": "boolean",
+          "default": false,
+          "description": "Почистить текст после сканирования (склеивать слова с дефисом на переносе строки, удалять лишние дефисы)."
+        }
+      }
+    }
+  }
+}
